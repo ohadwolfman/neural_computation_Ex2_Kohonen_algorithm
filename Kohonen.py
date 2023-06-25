@@ -132,7 +132,7 @@ def circleDataSet():
 
 def monkeyHand():
     # Set the parameters
-    hand = cv2.imread("monkeyHand.jpg")
+    hand = cv2.imread("images/monkeyHand.jpg")
     hand = cv2.cvtColor(hand,cv2.COLOR_BGR2GRAY)
     hand = cv2.resize(hand,(0,0), fx=0.5,fy=0.5)
     points = np.argwhere(hand != 255).astype(np.float32)
