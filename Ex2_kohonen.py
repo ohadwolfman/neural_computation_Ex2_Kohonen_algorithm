@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import cv2
 
 class Kohonen:
     def __init__(self, neurons_amount=20, learning_rate=0.7, radius=1.0):
@@ -201,8 +201,7 @@ def create_unUni_2_circle_dataset(num_points):
             dataset.append((x, y))
     return np.array(dataset)
 
-
-def main():
+def squareDataSet():
     # creating a square uniform dataset
     data_square = create_random_dataset(1000)
     create_data_plot(data_square)
@@ -232,6 +231,8 @@ def main():
     # 2.the second un-uniform square data
     Create_Kohonen_network(data_unUni_2, output_dim=200, learning_rate=0.5, num_epochs=1000, toPlt=True)
 
+
+def circleDataSet():
     # creating a donut uniform dataset
     data_donut = create_circle_dataset()
     create_data_plot(data_donut)
@@ -258,6 +259,27 @@ def main():
     Create_Kohonen_network(data_donut, output_dim=200, learning_rate=0.5, num_epochs=1000, toPlt=True)
     # 2.the second un-uniform square data
     Create_Kohonen_network(data_donut_unUni_2, output_dim=200, learning_rate=0.5, num_epochs=1000, toPlt=True)
+
+def monkeyHand():
+    # Set the parameters
+    hand = cv2.imread("images/monkeyHand.jpg")
+    hand = cv2.cvtColor(hand, cv2.COLOR_BGR2GRAY)
+    hand = cv2.resize(hand, (0, 0), fx=0.5, fy=0.5)
+    points = np.argwhere(hand != 255).astype(np.float32)
+    plt.imshow(hand)
+    plt.show()
+    print(points)
+
+def main():
+    # -------------- Part A ---------------
+    # --------------Square shape---------------
+    # squareDataSet()
+
+    # --------------Circle shape---------------
+    # circleDataSet()
+
+    # -------------- Part B ---------------
+    monkeyHand()
 
 
 if __name__ == "__main__":
