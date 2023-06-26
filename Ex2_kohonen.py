@@ -260,26 +260,14 @@ def circleDataSet():
     # 2.the second un-uniform square data
     Create_Kohonen_network(data_donut_unUni_2, output_dim=200, learning_rate=0.5, num_epochs=1000, toPlt=True)
 
-def monkeyHand():
-    # Set the parameters
-    hand = cv2.imread("images/monkeyHand.jpg")
-    hand = cv2.cvtColor(hand, cv2.COLOR_BGR2GRAY)
-    hand = cv2.resize(hand, (0, 0), fx=0.5, fy=0.5)
-    points = np.argwhere(hand != 255).astype(np.float32)
-    plt.imshow(hand)
-    plt.show()
-    print(points)
 
 def main():
     # -------------- Part A ---------------
     # --------------Square shape---------------
-    # squareDataSet()
+    squareDataSet()
 
     # --------------Circle shape---------------
-    # circleDataSet()
-
-    # -------------- Part B ---------------
-    monkeyHand()
+    circleDataSet()
 
 
 if __name__ == "__main__":
